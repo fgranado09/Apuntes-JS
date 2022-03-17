@@ -1,8 +1,19 @@
-const miCompra = [
-    { nombre: 'Desarrollo Web', precio: 20000 },
-    { nombre: 'Javascript', precio: 18750 },
-    { nombre: 'ReactJS', precio: 27500 }
-]
+const items = [
+    { name: 'Squirtle', price: 21 },
+    { name: 'Pikachu', price: 37 },
+    { name: 'Pidgey', price: 45 },
+    { name: 'Charmander', price: 60 }
+  ]
+/* items.sort((a, b) => {
+    if (a.name > b.name) {
+        return 1;
+    }
+    if (a.name < b.name) {
+        return -1;
+    }
+    // a es igual a b
+    return 0;
+}) */
 
-const total = miCompra.reduce((acc, el) => acc + el.precio, 0)
-console.log(total) // 66250
+items.sort ((a,b) => a.price > b.price );
+

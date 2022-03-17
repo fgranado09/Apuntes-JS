@@ -483,3 +483,146 @@ const miCompra = [
 
 const total = miCompra.reduce((acc, el) => acc + el.nombre, 0)
 console.log(total) // 66250
+
+// Sort - Reordena un array segun criterio que definamos 
+
+const numeros = [ 40, 1, 5, 200 ];
+numeros.sort((a, b) => a - b);  // [ 1, 5, 40, 200 ] de manera ascendente
+numeros.sort((a, b) => b - a);  // [ 200, 40, 5, 1 ] de manera decreciente 
+
+
+const items = [
+    { name: 'Pikachu', price: 21 },
+    { name: 'Charmander', price: 37 },
+    { name: 'Pidgey', price: 45 },
+    { name: 'Squirtle', price: 60 }
+    
+  ]
+items.sort((a, b) => {
+    if (a.name > b.name) {
+        return 1; // De manera creciente
+    }
+    if (a.name < b.name) {
+        return -1; // De manera decreciente 
+    }
+    // a es igual a b
+    return 0;
+})
+
+
+// EJEMPLOS APLICADOS
+
+const productos = [{ id: 1,  producto: "Arroz", precio: 125 },
+                  {  id: 2,  producto: "Fideo", precio: 70 },
+                  {  id: 3,  producto: "Pan"  , precio: 50},
+                  {  id: 4,  producto: "Flan" , precio: 100}]
+
+const buscado = productos.find(producto => producto.id === 3)
+console.log(buscado) //{id: 3, producto: "Pan", precio: 50}
+
+const existe = productos.some(producto => producto.nombre === “Harina”)
+console.log(existe ) // false
+
+const baratos = productos.filter(producto => producto.precio < 100)
+console.log(baratos)
+// [{id: 2,producto:"Fideo",precio:70},{id:3,producto:"Pan",precio: 50}]
+
+const listaNombres = productos.map(producto => producto.nombre)
+console.log(listaNombres);
+//[“Arroz”, “Fideo”, “Pan”, “Flan”]
+
+// MATH -- Contenedor de herramientas y metodos para realizar operaciones matematicas
+
+console.log( Math.E ) // 2.718281828459045 EULER
+console.log( Math.PI ) // 3.141592653589793 PI
+
+// Los métodos de Math.min() y Math.max() reciben una serie de argumentos numéricos y devuelven aquel de valor máximo o mínimo, según corresponda:
+
+console.log( Math.max(55, 13, 0, -25, 93, 4) ) // 93
+console.log( Math.min(55, 13, 0, -25, 93, 4) ) // -25
+
+// También se pueden referenciar los valores de infinito positivo o negativo a través de la variable global Infinity, de tipo number:
+
+console.log( Math.max(55, Infinity, 0, -25, 93, 4) ) // Infinity
+console.log( Math.min(55, 13, 0, -Infinity, 93, 4) ) // -Infinity
+
+// CEIL, FLOOR Y ROUND -- Sirven para redondear un valor numerico a un numero entero cercano 
+
+const pi = Math.PI // 3.141592653589793
+
+// CEIL: devuelve el entero mayor o igual más próximo
+console.log( Math.ceil(pi) ) // 4
+
+// FLOOR: devuelve el entero más cercano redondeado hacia abajo
+console.log( Math.floor(pi) ) // 3
+
+// ROUND: retorna el valor de un número redondeado al entero más cercano
+console.log( Math.round(pi) ) // 3
+
+// SQUARE ROOT -- Retorna la raiz cuadrada de un numero. Si se le envia un numero negativo, el metodo retorna NaN
+
+Math.sqrt(9) // 3
+Math.sqrt(2) // 1.414213562373095
+Math.sqrt(1)  // 1
+Math.sqrt(-1) // NaN
+
+// RANDOM -- Genera un numero pseudo-aleatorio entre 0 y 1, siendo 0 limite inclusivo y el 1 exclusivo.
+
+console.log( Math.random() ) // 0.6609867980868442
+console.log( Math.random() ) // 0.09291446900104305
+console.log( Math.random() ) // 0.6597817047013095
+
+// Para generar números aleatorios dentro de un rango deseado, distinto de 0-1, podemos multiplicar su resultado por el rango esperado. A la vez podemos sumar el límite inferior si lo necesitamos:
+
+// números entre 0 y 10
+console.log( Math.random() * 10 )
+// números entre 0 y 50
+console.log( Math.random() * 50)
+// números entre 20 y 50
+console.log( Math.random() * 30 + 20 )
+
+// REDONDEO -- Al usar Math.round, esta función retornará números aleatorios en el rango de 0-100 inclusive. Si usara Math.ceil los números irían de 1 a 100, ya que siempre redondeará hacia arriba; y si usa Math.floor el rango sería de 0 a 99.
+
+
+const generadorNumero = () => {
+    return Math.round( Math.random() * 100 )
+}
+
+console.log( generadorNumero() )
+
+// PONER TODO LO DE OPERACIONES MATEMATICAS
+
+// DATE -- Nos genera la fecha y tiempo actual 
+
+console.log( new Date() )
+// Fri Dec 17 2021 11:35:08 GMT-0300 (hora estándar de Argentina)
+
+// La convención con la que trabaja Javascript para construir fechas cuenta los meses a partir del 0 (0 = enero, 11 = diciembre) y los días a partir del 1:
+
+console.log(new Date(2020, 1, 15))
+// Sat Feb 15 2020 00:00:00 GMT-0300 (hora estándar de Argentina)
+
+const casiNavidad = new Date(2021, 11, 25, 23, 59, 59)
+console.log(casiNavidad)
+// Sat Dec 25 2021 23:59:59 GMT-0300 (hora estándar de Argentina)
+
+//También puede crear una fecha a partir de un string con formato específico:
+
+const casiNavidad = new Date("December 25, 2021 23:59:59")
+console.log(casiNavidad)
+// Sat Dec 25 2021 23:59:59 GMT-0300 (hora estándar de Argentina)
+
+const hoy = new Date("December 17, 2021")
+
+console.log(hoy.getFullYear()) // 2021
+console.log(hoy.getMonth()) // 11  (diciembre)
+console.log(hoy.getDay()) // 5  (viernes)
+
+// PRESENTACION DEL VALOR SINGULAR - Presenta fecha con distintos formatos posibles de tipo string
+
+const hoy = new Date("December 17, 2021")
+
+console.log( hoy.toDateString() ) // Fri Dec 17 2021
+console.log( hoy.toLocaleString() ) // 17/12/2021 00:00:00
+console.log( hoy.toLocaleDateString() ) // 17/12/2021
+console.log( hoy.toTimeString() ) // 00:00:00 GMT-0300 (hora estándar de Argentina)
